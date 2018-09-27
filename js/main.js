@@ -97,6 +97,8 @@ initMap = () => {
 
   updateRestaurants();
 }
+
+//keeping Google code in order to play with in future
 /* window.initMap = () => {
   let loc = {
     lat: 40.722216,
@@ -208,6 +210,8 @@ addMarkersToMap = (restaurants = self.restaurants) => {
   });
 
 } 
+
+//Keep Google Maps code to play with in future
 /* addMarkersToMap = (restaurants = self.restaurants) => {
   restaurants.forEach(restaurant => {
     // Add marker to the map

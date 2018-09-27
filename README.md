@@ -1,6 +1,6 @@
 # Restaurant Reviews 
 ---
-#### _Offline capable restaurant reviews application with functionality requested via instructions added in - original instructions can be found at https://github.com/udacity/mws-restaurant-stage-1 a_
+#### _Offline capable restaurant reviews application with functionality requested via instructions added in - original instructions can be found at https://github.com/udacity/mws-restaurant-stage-1_
 
 ## Installation
 

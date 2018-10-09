@@ -1,8 +1,7 @@
-//Register Serviceworker
-if ('serviceWorker' in navigator){
+if ('serviceWorker' in navigator) {
   navigator.serviceWorker
   .register('/service-worker.js')
-  .catch(function(err){
+  .catch(function(err) {
     console.error(err);
   });
 }
@@ -87,7 +86,7 @@ initMap = () => {
         scrollWheelZoom: false
       });
   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
-    mapboxToken: 'pk.eyJ1IjoibWFjYXR0YWNrMTM4MCIsImEiOiJjam1neXZ6dHowMXY4M3FtYmlwcHEycXUzIn0.1yo3Nt4VVWhld8pGT8vH4A',
+    mapboxToken: 'pk.eyJ1IjoibWNyYW5mb3JkIiwiYSI6ImNqa2JpYnAybTAzNXIzcXNnaDBpM3JjYWkifQ.3Knk5Le1HKRxB1UjGw_3Rg',
     maxZoom: 18,
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
       '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -97,20 +96,6 @@ initMap = () => {
 
   updateRestaurants();
 }
-
-//keeping Google code in order to play with in future
-/* window.initMap = () => {
-  let loc = {
-    lat: 40.722216,
-    lng: -73.987501
-  };
-  self.map = new google.maps.Map(document.getElementById('map'), {
-    zoom: 12,
-    center: loc,
-    scrollwheel: false
-  });
-  updateRestaurants();
-} */
 
 /**
  * Update page and map for current restaurants.
@@ -172,9 +157,10 @@ createRestaurantHTML = (restaurant) => {
   const image = document.createElement('img');
   image.className = 'restaurant-img';
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  image.alt = restaurant.alt;
   li.append(image);
 
-  const name = document.createElement('h1');
+  const name = document.createElement('h2');
   name.innerHTML = restaurant.name;
   li.append(name);
 
@@ -194,22 +180,6 @@ createRestaurantHTML = (restaurant) => {
 
   return li
 }
-
-/**
- * Add markers for current restaurants to the map.
- */
-addMarkersToMap = (restaurants = self.restaurants) => {
-  restaurants.forEach(restaurant => {
-    // Add marker to the map
-    const marker = DBHelper.mapMarkerForRestaurant(restaurant, self.newMap);
-    marker.on("click", onClick);
-    function onClick() {
-      window.location.href = marker.options.url;
-    }
-    self.markers.push(marker);
-  });
-
-} 
 
 //Keep Google Maps code to play with in future
 /* addMarkersToMap = (restaurants = self.restaurants) => {

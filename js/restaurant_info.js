@@ -22,7 +22,7 @@ initMap = () => {
         scrollWheelZoom: false
       });
       L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.jpg70?access_token={mapboxToken}', {
-        mapboxToken: 'pk.eyJ1IjoibWFjYXR0YWNrMTM4MCIsImEiOiJjam1neXZ6dHowMXY4M3FtYmlwcHEycXUzIn0.1yo3Nt4VVWhld8pGT8vH4A',
+        mapboxToken: 'pk.eyJ1IjoibWNyYW5mb3JkIiwiYSI6ImNqa2JpYnAybTAzNXIzcXNnaDBpM3JjYWkifQ.3Knk5Le1HKRxB1UjGw_3Rg',
         maxZoom: 18,
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
           '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
@@ -34,22 +34,6 @@ initMap = () => {
     }
   });
 }  
- 
-/* window.initMap = () => {
-  fetchRestaurantFromURL((error, restaurant) => {
-    if (error) { // Got an error!
-      console.error(error);
-    } else {
-      self.map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 16,
-        center: restaurant.latlng,
-        scrollwheel: false
-      });
-      fillBreadcrumb();
-      DBHelper.mapMarkerForRestaurant(self.restaurant, self.map);
-    }
-  });
-} */
 
 /**
  * Get current restaurant from page URL.
@@ -89,6 +73,7 @@ fillRestaurantHTML = (restaurant = self.restaurant) => {
   const image = document.getElementById('restaurant-img');
   image.className = 'restaurant-img'
   image.src = DBHelper.imageUrlForRestaurant(restaurant);
+  image.alt = restaurant.alt;
 
   const cuisine = document.getElementById('restaurant-cuisine');
   cuisine.innerHTML = restaurant.cuisine_type;
@@ -174,6 +159,7 @@ fillBreadcrumb = (restaurant=self.restaurant) => {
   const breadcrumb = document.getElementById('breadcrumb');
   const li = document.createElement('li');
   li.innerHTML = restaurant.name;
+  li.setAttribute('aria-current','page');
   breadcrumb.appendChild(li);
 }
 

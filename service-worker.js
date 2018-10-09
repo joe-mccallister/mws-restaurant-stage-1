@@ -55,3 +55,4 @@ self.addEventListener('fetch', function(e) {
         })
     );
 });
+© 2018 GitHub, Inc.
